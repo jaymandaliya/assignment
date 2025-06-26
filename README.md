@@ -1,79 +1,86 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+🛒 Grocery App - Interview Task
+This is a React Native project developed as part of an interview task. The app simulates a simple grocery shopping experience, implementing key features from the assignment document and Figma design.
 
-# Getting Started
+📱 Features Implemented
+✅ Home Screen
+UI built exactly as per Figma design.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+Product highlight animation on press using mock data.
 
-## Step 1: Start the Metro Server
+Shared element transition animation to Product Detail screen.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+✅ Product Detail Screen
+Displays selected product details.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+Handles Add to Cart when quantity is 0.
 
-```bash
-# using npm
-npm start
+Quantity increment and decrement buttons once added to cart.
 
-# OR using Yarn
-yarn start
-```
+Cart animations handled gracefully.
 
-## Step 2: Start your Application
+✅ Shared Element Navigation
+Seamless transition animation from product on Home Screen to Product Detail.
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+✅ Redux Toolkit Integration
+Cart managed with Redux Toolkit slice.
 
-### For Android
+All cart operations (add, remove, update quantity) handled via slice.
 
-```bash
-# using npm
-npm run android
+Implemented the assignment logic:
 
-# OR using Yarn
-yarn android
-```
+Minimum order amount
 
-### For iOS
+Free delivery threshold
 
-```bash
-# using npm
-npm run ios
+Global cart state updates reflected across app.
 
-# OR using Yarn
-yarn ios
-```
+✅ Add to Cart Animation
+Smooth animations for cart icon update and product quantity change.
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+✅ Track Order Screen
+Animated progress bar showing order tracking status.
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+Clean and interactive animation-based UI.
 
-## Step 3: Modifying your App
+✅ Enjoy Your Order Screen
+Animation-rich "Enjoy Order" screen once the order is completed.
 
-Now that you have successfully run the app, let's modify it.
+🚧 Pending Feature
+❌ Dynamic Island (iOS Only)
+Attempted to integrate Dynamic Island with native iOS module bridging, but encountered issues with native module setup within the given time frame.
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+✅ Feasibility: The integration is definitely possible and I’m confident about completing it with some additional time for proper native module bridging and setup.
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+📁 Clean Code Standards
+Neatly structured folders.
 
-## Congratulations! :tada:
+Fully commented for clarity.
 
-You've successfully run and modified your React Native App. :partying_face:
+Proper componentization and reusable components.
 
-### Now what?
+No redundant code.
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+▶️ Getting Started
+🔧 Prerequisites
+Node.js >= 14
 
-# Troubleshooting
+React Native CLI
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+Android Studio / Xcode
 
-# Learn More
+CocoaPods (for iOS)
 
-To learn more about React Native, take a look at the following resources:
+npm
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+🛠️ Installation
+git clone https://github.com/jaymandaliya/assignment
+cd assignment
+npm install
+cd ios && pod install
+🚀 Running the App
+
+For Android:
+npx react-native run-android
+
+For iOS:
+npx react-native run-ios
