@@ -1,0 +1,21 @@
+export { default as IconBackArrow } from '../assets/svgs/iconBackArrow';
+export { default as IconCall } from '../assets/svgs/iconCall';
+export { default as IconCart } from '../assets/svgs/iconCart';
+export { default as IconChevronDown } from '../assets/svgs/iconChevronDown';
+export { default as IconChevronRight } from '../assets/svgs/iconChevronRight';
+export { default as IconChevronRightGray } from '../assets/svgs/iconChevronRightGray';
+export { default as IconCloseBold } from '../assets/svgs/iconCloseBold';
+export { default as IconCloseLight } from '../assets/svgs/iconCloseLight';
+export { default as IconDurationClock } from '../assets/svgs/iconDurationClock';
+export { default as IconEdit } from '../assets/svgs/iconEdit';
+export { default as IconIncrease } from '../assets/svgs/iconIncrease';
+export { default as IconInformation } from '../assets/svgs/iconInformation';
+export { default as IconLocationPin } from '../assets/svgs/iconLocationPin';
+export { default as IconPerson } from '../assets/svgs/iconPerson';
+export { default as IconPricingFees } from '../assets/svgs/iconPricingFees';
+export { default as IconSearch } from '../assets/svgs/iconSearch';
+export { default as IconShare } from '../assets/svgs/iconShare';
+export { default as IconTip } from '../assets/svgs/iconTip';
+export { default as IconVerifiedDriver } from '../assets/svgs/iconVerifiedDriver';
+export {default as IconMinus} from '../assets/svgs/iconMinus';
+export {default as IconPlus} from '../assets/svgs/iconPlus'
