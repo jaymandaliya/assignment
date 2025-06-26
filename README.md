@@ -6,7 +6,8 @@ A feature-rich React Native grocery shopping application built as an interview t
 
 This grocery app provides a complete shopping experience with product browsing, cart management, order tracking, and delivery status updates. Built with React Native and Redux Toolkit for optimal performance and user experience.
 
-Screen recording attached for both platform iOS. & Android.
+Screen recordings for both iOS and Android platforms are attached.
+Link to screen recordings and screenshots: https://we.tl/t-Wott0PxgyK
 
 ## ✨ Key Features
 
