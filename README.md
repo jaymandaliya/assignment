@@ -9,6 +9,8 @@ This grocery app provides a complete shopping experience with product browsing, 
 Screen recordings for both iOS and Android platforms are attached.
 Link to screen recordings and screenshots: https://we.tl/t-Wott0PxgyK
 
+Screen recording attached for both platform iOS. & Android.
+
 ## ✨ Key Features
 
 ### 🏠 **Home Screen**
