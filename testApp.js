@@ -70,9 +70,9 @@ const TestApp = () => {
             title="Start Activity"
             onPress={() =>
               DynamicIslandModule.startFoodOrderActivity(
+                '8 min',
                 'Hoà Phan Dev',
-                'We are bringing great food directly to your kitchen',
-                'https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+                '8 min',
               )
             }
           />

@@ -1,210 +1,263 @@
-//
-//  WidgetFoodOrder.swift
-//  WidgetFoodOrder
-//
-//  Created by Hoa Phan on 12/10/2022.
-//
-
 import WidgetKit
 import SwiftUI
 
+// MARK: - Custom Color Extension
+extension Color {
+    static let brightCyan = Color(red: 0/255, green: 220/255, blue: 220/255)
+}
 
+// MARK: - Main Widget Bundle
 @main
 struct FoodOrderWidgets: WidgetBundle {
-  var body: some Widget {
-    if #available(iOS 16.1, *) {
-      WidgetFoodOrder()
+    var body: some Widget {
+        if #available(iOS 16.1, *) {
+            WidgetFoodOrder()
+        }
     }
-  }
 }
 
+// MARK: - Lock Screen View
 struct LockScreenView: View {
-  let context: ActivityViewContext<FoodOrderAttributes>
-  var body: some View {
-    VStack(alignment: .center) {
-      ContentView(context: context)
-      ActionButtontView()
-    }.padding()
-  }
+    let context: ActivityViewContext<FoodOrderAttributes>
+    var body: some View {
+        VStack(alignment: .center) {
+            ContentView(context: context)
+            ActionButtontView(context: context)
+        }
+        .padding()
+    }
 }
 
+// MARK: - Main Content View
 struct ContentView: View {
-  let context: ActivityViewContext<FoodOrderAttributes>
-  
-  var body: some View {
-    VStack(alignment: .leading) {
-      Text(context.attributes.title)
-        .foregroundColor(.white)
-        .font(.headline)
-      Text(context.state.mesage)
-        .foregroundColor(.white)
-        .font(.caption)
+    let context: ActivityViewContext<FoodOrderAttributes>
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(context.attributes.title)
+                .foregroundColor(.white)
+                .font(.headline)
+            Text(context.state.mesage)
+                .foregroundColor(.white)
+                .font(.caption)
+        }
     }
-  }
 }
 
+// MARK: - Icon View Example
 struct IconPlayView: View {
-  var body: some View {
-    HStack {
-      Image(systemName: "cart")
-        .foregroundColor(.green)
+    var body: some View {
+        HStack {
+            Image(systemName: "takeoutbag.and.cup.and.straw")
+                .foregroundColor(.brightCyan)
+        }
     }
-  }
 }
 
-struct IconNotifiyView: View {
-  var body: some View {
-    HStack(alignment: .center) {
-      Image(systemName: "xmark.bin")
-        .foregroundColor(.red)
-    }
-  }
-}
-
+// MARK: - Action Button View with Icon Left, Text Right
 struct ActionButtontView: View {
-  var body: some View {
-    VStack{
-      Link(destination: URL(string: "dynamicisland://cancel")!, label: {
-        HStack {
-          Image(systemName: "xmark.bin")
-            .foregroundColor(.white)
-            .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+    let context: ActivityViewContext<FoodOrderAttributes>
+
+    var body: some View {
+        HStack(spacing: 10) {
+            Image(systemName: "takeoutbag.and.cup.and.straw")
+                .foregroundColor(.brightCyan)
+                .padding(8)
+                .background(Color.black.opacity(0.2))
+                .clipShape(Circle())
+            
+            VStack(alignment: .leading, spacing: 2) {
+                Text(context.attributes.title)
+                    .foregroundColor(.white)
+                    .font(.headline)
+                
+                Text("8 min")
+                    .foregroundColor(.gray)
+                    .font(.caption)
+            }
         }
-        .background(.red)
-        .clipShape(Capsule())
-      })
-      
-      Link(destination: URL(string: "dynamicisland://order")!, label: {
-        HStack {
-          Image(systemName: "cart")
-            .foregroundColor(.white)
-            .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
-        }
-        .background(.green)
-        .clipShape(Capsule())
-      })
     }
-  }
 }
 
+// MARK: - Compact Leading View
 struct CompactLeadingView: View {
-  let context: ActivityViewContext<FoodOrderAttributes>
-  
-  var body: some View {
-    HStack () {
-      NetworkImage(url: URL(string: context.attributes.image))
-        .frame(width: 30, height: 30)
-        .cornerRadius(30)
-      Text(context.attributes.title)
-        .foregroundColor(.white)
-        .font(.caption2)
-    }.padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0))
-  }
+    let context: ActivityViewContext<FoodOrderAttributes>
+    
+    var body: some View {
+        HStack {
+            NetworkImage(url: URL(string: context.attributes.image))
+                .frame(width: 30, height: 30)
+                .cornerRadius(30)
+            Text(context.attributes.title)
+                .foregroundColor(.white)
+                .font(.caption2)
+        }
+        .padding(.leading, 5)
+    }
 }
 
+// MARK: - Compact Trailing View (only one icon, no red cancel)
 struct CompactTrailingView: View {
-  var body: some View {
-    HStack{
-      Link(destination: URL(string: "dynamicisland://order")!, label: {
+    var body: some View {
         HStack {
-          Image(systemName: "cart")
-            .foregroundColor(.white)
-            .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+            Link(destination: URL(string: "dynamicisland://order")!, label: {
+                HStack {
+                    Image(systemName: "takeoutbag.and.cup.and.straw")
+                        .foregroundColor(.white)
+                        .padding(5)
+                }
+                .background(Color.brightCyan)
+                .clipShape(Capsule())
+            })
         }
-        .background(.green)
-        .clipShape(Capsule())
-      })
-      
-      Link(destination: URL(string: "dynamicisland://cancel")!, label: {
-        HStack {
-          Image(systemName: "xmark.bin")
-            .foregroundColor(.white)
-            .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
-        }
-        .background(.red)
-        .clipShape(Capsule())
-      })
     }
-  }
 }
 
+// MARK: - Minimal View
 struct MinimalView: View {
-  let context: ActivityViewContext<FoodOrderAttributes>
-  var body: some View {
-    NetworkImage(url: URL(string: context.attributes.image))
-      .frame(width: 30, height: 30)
-      .cornerRadius(30)
-  }
+    let context: ActivityViewContext<FoodOrderAttributes>
+    var body: some View {
+        NetworkImage(url: URL(string: context.attributes.image))
+            .frame(width: 30, height: 30)
+            .cornerRadius(30)
+    }
 }
 
+// MARK: - Leading View
 struct LeadingView: View {
-  let context: ActivityViewContext<FoodOrderAttributes>
-  var body: some View {
-    NetworkImage(url: URL(string: context.attributes.image))
-      .frame(width: 90, height: 90)
-      .cornerRadius(16)
-  }
+    let context: ActivityViewContext<FoodOrderAttributes>
+    var body: some View {
+        NetworkImage(url: URL(string: context.attributes.image))
+            .frame(width: 90, height: 90)
+            .cornerRadius(16)
+    }
 }
 
+// MARK: - Image Loader
 struct NetworkImage: View {
-  let url: URL?
-  
-  var body: some View {
-    Group {
-      if let url = url, let imageData = try? Data(contentsOf: url),
-         let uiImage = UIImage(data: imageData) {
-        
-        Image(uiImage: uiImage)
-          .resizable()
-          .aspectRatio(contentMode: .fit)
-      }
-      else {
-        Image("placeholder-image")
-      }
+    let url: URL?
+    
+    var body: some View {
+        Group {
+            if let url = url,
+               let imageData = try? Data(contentsOf: url),
+               let uiImage = UIImage(data: imageData) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            } else {
+                Image("placeholder-image")
+            }
+        }
     }
-  }
 }
 
+// MARK: - Widget Config
 struct WidgetFoodOrder: Widget {
-  
-  var body: some WidgetConfiguration {
-    ActivityConfiguration(for: FoodOrderAttributes.self) { context in
-      // Create the view that appears on the Lock Screen and as a
-      // banner on the Home Screen of devices that don't support the
-      // Dynamic Island.
-      LockScreenView(context: context)
-    } dynamicIsland: { context in
-      // Create the views that appear in the Dynamic Island.
-      DynamicIsland {
-        // Create the expanded view.
-        DynamicIslandExpandedRegion(.leading) {
-          LeadingView(context: context)
-          
-        }
-        DynamicIslandExpandedRegion(.trailing) {
-          ActionButtontView()
-        }
+    var body: some WidgetConfiguration {
+        ActivityConfiguration(for: FoodOrderAttributes.self) { context in
+            LockScreenView(context: context)
+        } dynamicIsland: { context in
+    DynamicIsland {
         DynamicIslandExpandedRegion(.center) {
-          ContentView(context: context)
+            VStack(alignment: .leading, spacing: 8) {
+                // Top Row: Icon + Title + Price
+                HStack {
+                    HStack(spacing: 8) {
+                        Image(systemName: "takeoutbag.and.cup.and.straw")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(.brightCyan)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("BurgerHouse")
+                                .foregroundColor(.white)
+                                .font(.subheadline)
+                            Text("Cheeseburger Menu x2")
+                                .foregroundColor(.gray)
+                                .font(.caption)
+                        }
+                    }
+
+                    Spacer()
+
+                    Text("$19.90")
+                        .foregroundColor(.white)
+                        .font(.headline)
+                }
+
+                // Progress Bar + Labels
+                VStack(spacing: 6) {
+                    ProgressView(value: 0.4)
+                        .progressViewStyle(LinearProgressViewStyle(tint: .brightCyan))
+                        .scaleEffect(x: 1, y: 2, anchor: .center)
+
+                    HStack {
+                        Text("Preparing")
+                        Spacer()
+                        Text("On the Way")
+                        Spacer()
+                        Text("At the Address")
+                        Spacer()
+                        Text("Delivered")
+                    }
+                    .foregroundColor(.gray)
+                    .font(.caption2)
+                }
+
+                // Driver ETA Row
+                HStack(spacing: 10) {
+                    NetworkImage(url: URL(string: context.attributes.image))
+                        .frame(width: 32, height: 32)
+                        .clipShape(Circle())
+
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Kadir’s ETA")
+                            .foregroundColor(.white)
+                            .font(.caption)
+                        Text("8 min")
+                            .foregroundColor(.brightCyan)
+                            .font(.headline)
+                    }
+
+                    Spacer()
+
+                    HStack(spacing: 12) {
+                        Circle()
+                            .fill(Color.white.opacity(0.1))
+                            .frame(width: 32, height: 32)
+                            .overlay(Image(systemName: "message.fill").foregroundColor(.white))
+
+                        Circle()
+                            .fill(Color.brightCyan)
+                            .frame(width: 32, height: 32)
+                            .overlay(Image(systemName: "phone.fill").foregroundColor(.white))
+                    }
+                }
+            }
+            .padding(.horizontal)
         }
-      } compactLeading: {
-        // Create the compact leading view.
+
+        // Compact & Minimal can remain the same:
+        DynamicIslandExpandedRegion(.leading) { EmptyView() }
+        DynamicIslandExpandedRegion(.trailing) { EmptyView() }
+    } compactLeading: {
         CompactLeadingView(context: context)
-      } compactTrailing: {
-        // Create the compact trailing view.
+    } compactTrailing: {
         CompactTrailingView()
-      } minimal: {
-        // Create the minimal view.
+    } minimal: {
         MinimalView(context: context)
-      }
-      .keylineTint(.yellow)
     }
-  }
+    .keylineTint(.yellow)
 }
 
+    }
+}
+
+// MARK: - Preview
 struct WidgetFoodOrder_Previews: PreviewProvider {
-  static var previews: some View {
-    IconPlayView()
-      .previewContext(WidgetPreviewContext(family: .systemSmall))
-  }
+    static var previews: some View {
+        IconPlayView()
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+    }
 }
