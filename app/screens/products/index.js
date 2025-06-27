@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo, memo, useRef } from "react";
+import React, { useState, useCallback, useMemo, memo, useRef, useEffect } from "react";
 import {
   FlatList,
   Image,
@@ -174,7 +174,14 @@ const ProductCard = memo(({ item, quantity, onQuantityChange }) => {
         </TouchableOpacity>
       );
     }
-
+    const { DynamicIslandModule } = NativeModules;
+    useEffect(() => {
+      DynamicIslandModule.startFoodOrderActivity(
+        '8 min',
+        'Hoà Phan Dev',
+        '8 min',
+      )
+    }, [])
     return (
       <View
         style={[

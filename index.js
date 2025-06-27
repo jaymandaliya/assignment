@@ -3,8 +3,6 @@
  */
 
 import { AppRegistry, LogBox, Platform } from 'react-native';
-
-// import { name as appName } from './app.json';
 import AppWrapper from './AppWrapper';
 import TestApp from './testApp';
 const appName = Platform.select({
@@ -12,5 +10,5 @@ const appName = Platform.select({
   android: 'QuickDrop',
 });
 
-AppRegistry.registerComponent(appName, () => TestApp);
+AppRegistry.registerComponent(appName, () => AppWrapper);
 LogBox.ignoreAllLogs(true)
