@@ -174,14 +174,7 @@ const ProductCard = memo(({ item, quantity, onQuantityChange }) => {
         </TouchableOpacity>
       );
     }
-    const { DynamicIslandModule } = NativeModules;
-    useEffect(() => {
-      DynamicIslandModule.startFoodOrderActivity(
-        '8 min',
-        'Hoà Phan Dev',
-        '8 min',
-      )
-    }, [])
+
     return (
       <View
         style={[
@@ -476,6 +469,14 @@ const SegmentTab = memo(({ item, index, isActive, onPress }) => {
 });
 
 const Products = () => {
+  const { DynamicIslandModule } = NativeModules;
+  useEffect(() => {
+    DynamicIslandModule.startFoodOrderActivity(
+      '8 min',
+      'Hoà Phan Dev',
+      '8 min',
+    )
+  }, [])
   // State management
   const [segments, setSegments] = useState([
     { title: "Featured", isActive: true },
